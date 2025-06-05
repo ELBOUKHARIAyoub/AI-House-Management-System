@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="ExpenseBorderPane" prefHeight="352.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.ExpenseTableViewController">
+    <bottom>
+
+
+
+        <!-- Expense List Controls -->
+        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="360.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <Button fx:id="addExpenseBtn" onAction="#handleAddExpense" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="+ Add Expense" />
+            <Button fx:id="editExpenseBtn" onAction="#handleEditExpense" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="Edit Selected" />
+            <Button fx:id="deleteExpenseBtn" onAction="#handleDeleteExpense" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="Delete Selected" />
+            <!-- Export Button -->
+            <Button fx:id="exportExpenseBtn" onAction="#handleExportToPDF" style="-fx-background-color: #8e44ad;" text="Export to PDF" />
+        </HBox>
+    </bottom>
+    <center>
+        <TableView fx:id="TableViewExpense" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="ColumnName" text="NAME" />
+                <TableColumn fx:id="ColumnAmount" prefWidth="114.0" text="expense AMOUNT" />
+                <TableColumn fx:id="ColumnDemo" prefWidth="113.0" text="COMMENT" />
+
+
+            </columns>
+        </TableView>
+    </center>
+   <top>
+      <HBox prefHeight="28.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="expenseCountLabel" text="Label" />
+         </children>
+          <!-- Filter Field -->
+          <Label text="Filter:" />
+          <TextField fx:id="filterExpenseField" promptText="Enter name or demo..." />
+
+
+      </HBox>
+   </top>
+</BorderPane>

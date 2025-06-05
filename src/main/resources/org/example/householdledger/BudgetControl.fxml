@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="20.0" style="-fx-padding: 30;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.budgetController">
+
+    <!-- Section Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <ImageView fitHeight="64.0" fitWidth="64.0" preserveRatio="true">
+            <image>
+                <Image url="@image/002-budgeting.png" />
+            </image>
+        </ImageView>
+        <VBox>
+
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Budget Control" />
+            <Label style="-fx-text-fill: #7f8c8d;" text="• Set budgets and track expenses" wrapText="true">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #7f8c8d;" text="• Receive alerts for overspending" wrapText="true" />
+        </VBox>
+    </HBox>
+
+    <!-- Content Grid -->
+    <GridPane hgap="20.0" vgap="15.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="10.0" prefWidth="422.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="878.0" minWidth="10.0" prefWidth="878.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="0.0" prefWidth="0.0" />
+        </columnConstraints>
+
+        <!-- Budget Categories Table -->
+        <VBox style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 20;">
+            <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 14px;" text="Budget Categories" />
+            <VBox prefHeight="42.0" prefWidth="460.0" spacing="10">
+                <Button fx:id="loadBudgetDataBtn" onAction="#handleBudgetButton" style="-fx-background-color: linear-gradient(to right, #1abc9c, #16a085);     -fx-text-fill: white;     -fx-font-weight: bold;     -fx-font-size: 14px;     -fx-background-radius: 6;     -fx-padding: 10 20;     -fx-cursor: hand;     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.0, 0.0, 2);" text="💰 Load Budget Control" />
+</VBox>
+</VBox>
+
+<!-- Budget Overview Panel -->
+        <VBox style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 20;" GridPane.columnIndex="1">
+            <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50; -fx-font-size: 14px;" text="Budget Overview" />
+            <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20;">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+
+                <!-- Total Budget -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-text-fill: #7f8c8d;" text="Total Budget:" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="totalBudgetLabel" style="-fx-text-fill: #27ae60; -fx-font-weight: bold; -fx-font-size: 14px;" text="¥5,000" />
+                </HBox>
+
+                <!-- Total Spent -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-text-fill: #7f8c8d;" text="Total Spent:" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="totalSpentLabel" style="-fx-text-fill: #e74c3c; -fx-font-weight: bold; -fx-font-size: 14px;" text="¥3,200" />
+                </HBox>
+
+                <!-- Remaining Budget -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-text-fill: #7f8c8d;" text="Remaining:" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label fx:id="remainingBudgetLabel" style="-fx-text-fill: #27ae60; -fx-font-weight: bold; -fx-font-size: 14px;" text="¥1,800" />
+                </HBox>
+
+                <!-- Progress Bar -->
+                <VBox prefHeight="92.0" prefWidth="798.0" spacing="5.0">
+                    <Label fx:id="progressLabel" alignment="CENTER" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" text="64% of budget used" />
+               <VBox prefHeight="113.0" prefWidth="798.0">
+                  <children>
+                          <ProgressBar fx:id="budgetProgressBar" prefHeight="38.0" prefWidth="279.0" progress="0.64" style="-fx-accent: #3498db;" />
+                     <Separator prefHeight="25.0" prefWidth="798.0" />
+         
+                         <Button fx:id="refreshBtn" onAction="#refreshData" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 6; -fx-font-weight: bold;" text="🔄 Refresh Data" />
+                  </children>
+               </VBox>
+                </VBox>
+
+                <!-- Alerts Section -->
+                <Separator />
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #e74c3c; -fx-font-size: 12px;" text="Budget Alerts" />
+                <ListView fx:id="alertsListView" prefHeight="80.0" style="-fx-background-color: #fdeaea; -fx-border-color: #e74c3c; -fx-border-radius: 4;" />
+            </VBox>
+        </VBox>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <!-- Budget Summary Cards -->
+    <HBox alignment="CENTER" spacing="20.0">
+        <!-- Categories Over Budget -->
+        <VBox alignment="CENTER" style="-fx-background-color: #fdeaea; -fx-background-radius: 8; -fx-padding: 15; -fx-min-width: 120;">
+            <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 11px;" text="Over Budget" />
+            <Label fx:id="overBudgetCountLabel" style="-fx-text-fill: #e74c3c; -fx-font-size: 24px; -fx-font-weight: bold;" text="2">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 10px;" text="Categories" />
+        </VBox>
+
+        <!-- On Track Categories -->
+        <VBox alignment="CENTER" style="-fx-background-color: #e8f5e8; -fx-background-radius: 8; -fx-padding: 15; -fx-min-width: 120;">
+            <Label style="-fx-text-fill: #27ae60; -fx-font-size: 11px;" text="On Track" />
+            <Label fx:id="onTrackCountLabel" style="-fx-text-fill: #27ae60; -fx-font-size: 24px; -fx-font-weight: bold;" text="5">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #27ae60; -fx-font-size: 10px;" text="Categories" />
+        </VBox>
+
+        <!-- Avg Spending -->
+        <VBox alignment="CENTER" style="-fx-background-color: #fff3e0; -fx-background-radius: 8; -fx-padding: 15; -fx-min-width: 120;">
+            <Label style="-fx-text-fill: #f57c00; -fx-font-size: 11px;" text="Avg Daily" />
+            <Label fx:id="avgSpendingLabel" style="-fx-text-fill: #f57c00; -fx-font-size: 24px; -fx-font-weight: bold;" text="¥106">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #f57c00; -fx-font-size: 10px;" text="Spending" />
+        </VBox>
+    </HBox>
+
+    <!-- Action Buttons -->
+    <HBox alignment="CENTER" spacing="12.0">
+        <Button fx:id="setBudgetBtn" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6;" text="Set Budget" />
+        <Button fx:id="editBudgetBtn" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6;" text="Edit Budget" />
+        <Button fx:id="budgetReportBtn" style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6;" text="Budget Report" />
+        <Button fx:id="alertSettingsBtn" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 10 20; -fx-background-radius: 6;" text="Alert Settings" />
+    </HBox>
+</VBox>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.householdledger.Controller.signUpController"
+            prefWidth="400" prefHeight="300"
+             style="-fx-background-color: #f4f4f4;">
+    <VBox alignment="CENTER" spacing="15.0" layoutX="50" layoutY="50" prefWidth="300" AnchorPane.topAnchor="50" AnchorPane.bottomAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+        <Label text="Sign Up" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="userName" promptText="Username" maxWidth="250"/>
+        <PasswordField fx:id="userPassword" promptText="Password" maxWidth="250"/>
+
+        <Button fx:id="signupButton"
+                onAction="#signUp"
+         text="Sign Up" maxWidth="150"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Label fx:id="loginLink"
+               text="Already have an account? Login"
+               onMouseClicked="#goToLogin"
+               style="-fx-text-fill: #2196F3; -fx-underline: true; -fx-cursor: hand;" />
+
+    </VBox>
+</AnchorPane>

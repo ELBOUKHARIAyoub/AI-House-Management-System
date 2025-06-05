@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20.0" style="-fx-padding: 30;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.incomeController">
+
+    <!-- Section Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <ImageView fitHeight="64.0" fitWidth="64.0" preserveRatio="true">
+            <image>
+                <Image url="@image/001-accountant.png" />
+            </image>
+        </ImageView>
+        <VBox>
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Income and Expense Tracking" />
+            <Label style="-fx-text-fill: #7f8c8d;" text="• Record income sources and categorize expenses" wrapText="true">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #7f8c8d;" text="• Analyze spending by category" wrapText="true" />
+        </VBox>
+    </HBox>
+
+    <!-- Content Grid -->
+    <GridPane hgap="20.0" vgap="15.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0" />
+        </columnConstraints>
+
+        <!-- Recent Income Panel -->
+        <VBox style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 20;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #27ae60; -fx-font-size: 14px;" text="Recent Income" />
+                <Region HBox.hgrow="ALWAYS" />
+
+            </HBox>
+         <!-- Insert TableView for income data here go9 -->
+            <VBox prefHeight="428.0" prefWidth="360.0" spacing="10">
+                <Button fx:id="loadIncomeTableBtn" onAction="#loadIncomeTable" style="-fx-background-color: linear-gradient(to right, #3498db, #2980b9);                -fx-text-fill: white;                -fx-font-weight: bold;                -fx-font-size: 14px;                -fx-background-radius: 6;                -fx-padding: 10 20;                -fx-cursor: hand;                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.0, 0.0, 2);" text="📥 Load Income Table" />
+                <AnchorPane fx:id="incomeTableContainer1" prefHeight="400.0" prefWidth="360.0" />
+
+            </VBox>
+        </VBox>
+
+        <!-- Recent Expenses Panel -->
+        <VBox style="-fx-background-color: #f8f9fa; -fx-background-radius: 8; -fx-padding: 20;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #e74c3c; -fx-font-size: 14px;" text="Recent Expenses" />
+                <Region HBox.hgrow="ALWAYS" />
+            </HBox>
+            <Button fx:id="loadExpenseTableBtn" onAction="#loadExpenseTable" style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b);                -fx-text-fill: white;                -fx-font-weight: bold;                -fx-font-size: 14px;                -fx-background-radius: 6;                -fx-padding: 10 20;                -fx-cursor: hand;                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.0, 0.0, 2);" text="📥 Load Expense Table" />
+        </VBox>
+      <rowConstraints>
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <!-- Summary Cards -->
+    <HBox alignment="CENTER" spacing="20.0">
+        <!-- Total Income Card -->
+        <VBox alignment="CENTER" style="-fx-background-color: #e8f5e8; -fx-background-radius: 8; -fx-padding: 20; -fx-min-width: 160; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+            <Label style="-fx-text-fill: #27ae60; -fx-font-size: 12px; -fx-font-weight: bold;" text="Total Income" />
+            <Label fx:id="totalIncomeLabel" style="-fx-text-fill: #27ae60; -fx-font-size: 22px; -fx-font-weight: bold;" text="¥0.00">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label fx:id="incomeChangeLabel" style="-fx-text-fill: #7f8c8d; -fx-font-size: 10px;" text="No change">
+                <VBox.margin>
+                    <Insets top="2.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+
+        <!-- Total Expenses Card -->
+        <VBox alignment="CENTER" style="-fx-background-color: #fdeaea; -fx-background-radius: 8; -fx-padding: 20; -fx-min-width: 160; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+            <Label style="-fx-text-fill: #e74c3c; -fx-font-size: 12px; -fx-font-weight: bold;" text="Total Expenses" />
+            <Label fx:id="totalExpensesLabel" style="-fx-text-fill: #e74c3c; -fx-font-size: 22px; -fx-font-weight: bold;" text="¥0.00">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label fx:id="expenseChangeLabel" style="-fx-text-fill: #7f8c8d; -fx-font-size: 10px;" text="No change">
+                <VBox.margin>
+                    <Insets top="2.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+
+        <!-- Net Income Card -->
+        <VBox alignment="CENTER" style="-fx-background-color: #e3f2fd; -fx-background-radius: 8; -fx-padding: 20; -fx-min-width: 160; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+            <Label style="-fx-text-fill: #2196f3; -fx-font-size: 12px; -fx-font-weight: bold;" text="Net Income" />
+            <Label fx:id="netIncomeLabel" style="-fx-text-fill: #2196f3; -fx-font-size: 22px; -fx-font-weight: bold;" text="¥0.00">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label fx:id="netChangeLabel" style="-fx-text-fill: #7f8c8d; -fx-font-size: 10px;" text="No change">
+                <VBox.margin>
+                    <Insets top="2.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+
+        <!-- Savings Rate Card -->
+        <VBox alignment="CENTER" style="-fx-background-color: #f3e5f5; -fx-background-radius: 8; -fx-padding: 20; -fx-min-width: 160; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);">
+            <Label style="-fx-text-fill: #9c27b0; -fx-font-size: 12px; -fx-font-weight: bold;" text="Savings Rate" />
+            <Label fx:id="savingsRateLabel" style="-fx-text-fill: #9c27b0; -fx-font-size: 22px; -fx-font-weight: bold;" text="0%">
+                <VBox.margin>
+                    <Insets top="5.0" />
+                </VBox.margin>
+            </Label>
+            <Label style="-fx-text-fill: #7f8c8d; -fx-font-size: 10px;" text="of income saved">
+                <VBox.margin>
+                    <Insets top="2.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+    </HBox>
+
+    <!-- Action Buttons -->
+    <HBox alignment="CENTER" spacing="15.0">
+        <Button fx:id="refreshBtn" onAction="#refreshData" style="-fx-background-color: #17a2b8; -fx-text-fill: white; -fx-padding: 12 20; -fx-background-radius: 6; -fx-font-weight: bold;" text="🔄 Refresh Data" />
+    </HBox>
+</VBox>

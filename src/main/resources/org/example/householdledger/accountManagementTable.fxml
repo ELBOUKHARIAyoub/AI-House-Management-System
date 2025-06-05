@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="543.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.AccountManagementController">
+   <BorderPane prefHeight="400.0" prefWidth="544.0">
+      <center>
+          <TableView fx:id="accountsTable" prefHeight="346.0" prefWidth="534.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+              <columns>
+                  <TableColumn fx:id="accountNameColumn" prefWidth="200.0" text="Account Name" />
+                  <TableColumn fx:id="accountTypeColumn" prefWidth="120.0" text="Type" />
+                  <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="Balance" />
+                  <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
+              </columns>
+          </TableView>
+      </center>
+   </BorderPane>
+</AnchorPane>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="IncomrBorderPane" prefHeight="490.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.incomeTableViewController">
+    <bottom>
+
+
+
+        <!-- Income List Controls -->
+        <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="360.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <Button fx:id="addIncomeBtn" onAction="#handleAddIncome" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="+ Add Income" />
+            <Button fx:id="editIncomeBtn" onAction="#handleEditIncome" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="Edit Selected" />
+            <Button fx:id="deleteIncomeBtn" onAction="#handleDeleteIncome" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4; -fx-font-size: 11px;" text="Delete Selected" />
+            <Button fx:id="exportPdfBtn" onAction="#handleExportToPdf" style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 4;" text="📄 Export to PDF" />
+
+        </HBox>
+    </bottom>
+    <center>
+        <TableView fx:id="TableViewIncome" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="ColumnName" text="NAME" />
+                <TableColumn fx:id="ColumnAmount" text="AMOUNT" />
+                <TableColumn fx:id="ColumnDemo" text="COMMENT" />
+                <TableColumn fx:id="ColumnDate" text="DATE" />
+
+            </columns>
+        </TableView>
+    </center>
+   <top>
+       <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 12; -fx-background-color: #f7f7f7; -fx-border-color: #e0e0e0; -fx-border-radius: 8; -fx-background-radius: 8;">
+           <Label style="-fx-font-weight: bold;" text="🔍 Filter by Name:" />
+           <TextField fx:id="filterNameField" prefHeight="29.0" prefWidth="92.0" promptText="Type name..." style="-fx-background-radius: 6; -fx-padding: 6 10;" />
+
+           <Label style="-fx-font-weight: bold;" text="📅 Filter by Date:" />
+           <DatePicker fx:id="filterDatePicker" prefHeight="25.0" prefWidth="102.0" style="-fx-background-radius: 6;" />
+
+           <Button onAction="#handleApplyFilter" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 6; -fx-padding: 6 12;" text="✅ Apply Filter" />
+
+           <Button onAction="#handleClearFilter" prefHeight="29.0" prefWidth="96.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 6; -fx-padding: 6 12;" text="❌ Clear" />
+       </HBox>
+
+   </top>
+</BorderPane>

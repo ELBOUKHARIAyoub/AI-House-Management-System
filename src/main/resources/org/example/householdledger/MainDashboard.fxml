@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.householdledger.Controller.MainDashboardController">
+
+    <!-- Top Menu Bar -->
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="New" />
+                    <MenuItem text="Open" />
+                    <MenuItem text="Save" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Exit" />
+                </Menu>
+                <Menu text="View">
+                    <MenuItem text="Dashboard" />
+                    <MenuItem text="Reports" />
+                    <MenuItem text="Settings" />
+                </Menu>
+                <Menu text="Tools">
+                    <MenuItem text="Import Data" />
+                    <MenuItem text="Export Data" />
+                    <MenuItem text="Backup" />
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="User Guide" />
+                    <MenuItem text="About" />
+                </Menu>
+            </MenuBar>
+
+            <!-- Welcome Header -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-background-color: #f8f9fa; -fx-padding: 20;">
+                <StackPane alignment="CENTER" prefHeight="40.0" prefWidth="40.0">
+                    <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                        <image>
+                            <Image url="@image/004-profile.png" />
+                        </image>
+                    </ImageView>
+                </StackPane>
+                <Label fx:id="welcomeLabel" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Welcome!" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Main Content with Tabs -->
+    <center>
+        <TabPane fx:id="mainTabPane" style="-fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);                 -fx-border-radius: 12px;                 -fx-background-radius: 12px;                 -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);                 -fx-padding: 8px;" tabClosingPolicy="UNAVAILABLE">
+
+            <!-- Income Management Tab -->
+            <Tab fx:id="incomeTab" style="-fx-background-color: transparent;                 -fx-background-radius: 8px 8px 0 0;                 -fx-border-radius: 8px 8px 0 0;                 -fx-padding: 12px 20px;                 -fx-font-size: 14px;                 -fx-font-weight: 500;" text="💰 Income Management">
+                <content>
+                    <VBox prefHeight="495.0" prefWidth="933.0" style="-fx-background-color: white;                          -fx-background-radius: 0 8px 8px 8px;                          -fx-padding: 20px;                          -fx-spacing: 10px;                          -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                        <fx:include source="IncomeManagement.fxml" />
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- Budget Control Tab -->
+            <Tab fx:id="budgetTab" style="-fx-background-color: transparent;                 -fx-background-radius: 8px 8px 0 0;                 -fx-border-radius: 8px 8px 0 0;                 -fx-padding: 12px 20px;                 -fx-font-size: 14px;                 -fx-font-weight: 500;" text="📊 Budget Control">
+                <content>
+                    <VBox style="-fx-background-color: white;                          -fx-background-radius: 0 8px 8px 8px;                          -fx-padding: 20px;                          -fx-spacing: 10px;                          -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                        <fx:include source="BudgetControl.fxml" />
+                    </VBox>
+                </content>
+            </Tab>
+
+            <!-- Account Management Tab -->
+            <Tab fx:id="accountTab" style="-fx-background-color: transparent;                 -fx-background-radius: 8px 8px 0 0;                 -fx-border-radius: 8px 8px 0 0;                 -fx-padding: 12px 20px;                 -fx-font-size: 14px;                 -fx-font-weight: 500;" text="🏦 Account Management">
+                <content>
+                    <VBox style="-fx-background-color: white;                          -fx-background-radius: 0 8px 8px 8px;                          -fx-padding: 20px;                          -fx-spacing: 10px;                          -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                        <fx:include source="AccountManagement.fxml" />
+                    </VBox>
+                </content>
+            </Tab>
+            <Tab fx:id="AiTab" style="-fx-background-color: transparent;                 -fx-background-radius: 8px 8px 0 0;                 -fx-border-radius: 8px 8px 0 0;                 -fx-padding: 12px 20px;                 -fx-font-size: 14px;                 -fx-font-weight: 500;" text="🤖 Ai Assistant ">
+           <content>
+               <VBox style="-fx-background-color: white;                          -fx-background-radius: 0 8px 8px 8px;                          -fx-padding: 20px;                          -fx-spacing: 10px;                          -fx-effect: innershadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                   <fx:include source="ChatWindow.fxml" />
+               </VBox>
+                   </content>
+         </Tab>
+        </TabPane>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #34495e; -fx-padding: 8 20;">
+            <Label style="-fx-text-fill: white;" text="Status: Connected" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lastUpdatedLabel" style="-fx-text-fill: #bdc3c7;" text="Last Updated: Today, 10:30 AM" />
+        </HBox>
+    </bottom>
+</BorderPane>
