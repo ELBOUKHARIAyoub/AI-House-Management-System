@@ -1,4 +1,4 @@
-# 💰 JavaFX Household Ledger App
+## 💰 JavaFX Household Ledger App
 
 A simple and powerful household ledger system built with JavaFX and MySQL.  
 Perfect for students or families to track income, expenses, and budgets in a visual and intuitive way.
