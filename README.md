@@ -1,6 +1,6 @@
 # 💰 JavaFX Household Ledger App
 
-[🇬🇧 English](README.en.md) | [🇨🇳 中文](README.zh.md)
+[🇬🇧 English](README.en.md) | [🇨🇳 中文](README.cn.md)
 
 Welcome! This is a cross-platform JavaFX application for managing your daily income, expenses, and budgets.
 Also Finance Account management (deposit,send,wirthraw) money
