@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class DeepSeekService {
-    private static final String API_KEY = "sk-EDHXcF3kIvDYDSItWxeoJ7F9RqUKno14cbYcH7Z7RsArvsNN";
+    private static final String API_KEY = "ZBI LA DITIH";
     private static final String ENDPOINT = "https://dseek.aikeji.vip/v1/chat/completions";
 
 
