@@ -63,7 +63,7 @@ Whether you're trying to manage a monthly allowance, monitor family spending, or
 
 ## 🎥 Project Demo
 
-📽️ [Watch on YouTube]([https://youtu.be/JaqlPjGoi7U])
+📽️ [Watch on YouTube](https://youtu.be/JaqlPjGoi7U)
 
 
 
