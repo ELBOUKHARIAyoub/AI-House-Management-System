@@ -19,7 +19,7 @@ Whether you're trying to manage a monthly allowance, monitor family spending, or
 - **Name:** El Boukhari Ayoub
 - 🎓 Computer Science Student at Nanchang University
 - 🌍 Based in Morocco 🇲🇦 / China 🇨🇳
-- 📬 Contact: [20174066@email.ncu.edu.cn](mailto:20174066@email.ncu.edu.cn)
+- 📬 Contact: [2017224066@email.ncu.edu.cn](mailto:2017224066@email.ncu.edu.cn)
 - 💻 GitHub: [@ayoubbk](https://github.com/ELBOUKHARIAyoub)
 ## ✨ Features
 
